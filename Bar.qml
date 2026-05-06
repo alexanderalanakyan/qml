@@ -3,14 +3,17 @@ import Quickshell
 import QtQuick.Layouts
 
 PanelWindow {
-    property var modelData;
+    required property var top
+    required property  var bottom
+    required property  var left
+    required property  var right
     id: topbar
     color: "transparent"
     anchors {
-        top: modelData.top
-        bottom: modelData.bottom
-        left: modelData.left
-        right: modelData.right
+        top: top
+        bottom: bottom
+        left: left
+        right: right
     }
     implicitHeight: 50
 
