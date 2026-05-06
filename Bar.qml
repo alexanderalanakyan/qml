@@ -7,9 +7,10 @@ PanelWindow {
     id: topbar
     color: "transparent"
     anchors {
-        top: true
-        left: true
-        right: true
+        top: modelData.top
+        bottom: modelData.bottom
+        left: modelData.left
+        right: modelData.right
     }
     implicitHeight: 50
 

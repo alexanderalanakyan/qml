@@ -12,12 +12,6 @@ Singleton {
     */
     id: root
 
-    property string previousSinkName: ""
-    property string previousSourceName: ""
-
-    property list<PwNode> sinks: []
-    property list<PwNode> sources: []
-    property list<PwNode> streams: []
 
     readonly property PwNode sink: Pipewire.defaultAudioSink
     readonly property PwNode source: Pipewire.defaultAudioSource
