@@ -11,7 +11,5 @@ Singleton {
     property BluetoothAdapter currentAdapter: Bluetooth.defaultAdapter;
 
 
-        Repeater {
-            model: devices
-        }
+        
     }
