@@ -11,9 +11,7 @@ Singleton {
     property BluetoothAdapter currentAdapter: Bluetooth.defaultAdapter;
 
 
-        devices.forEach: function(device) {
-            if (device.connected) {
-                root.currentDevices.push(device);
-                }
-            }
+        Repeater {
+            model: devices
+        }
     }

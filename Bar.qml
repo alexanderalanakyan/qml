@@ -3,6 +3,7 @@ import Quickshell
 import QtQuick.Layouts
 
 PanelWindow {
+    property var modelData 
     required property var top
     required property  var bottom
     required property  var left
@@ -21,8 +22,8 @@ PanelWindow {
         id: rectBar
         color: Color.tokyoNight.bg
         anchors.fill: parent
-        bottomLeftRadius: 10.0
-        bottomRightRadius: 10.0
+        bottomLeftRadius: 15.0
+        bottomRightRadius: 15.0
 
         RowLayout {
             anchors.fill: parent
@@ -51,12 +52,13 @@ PanelWindow {
          Repeater {
             model: Workspaces.num > 9 ? Workspaces.num : 9
                 Text {
-                    font.pixelSize: 14
+                    font.pixelSize: 16
                     text: index +1
                     color: index +1 === Workspaces.cw.id ? Color.tokyoNight.blue : Color.tokyoNight.terminal_black
                     MouseArea {
                     enabled: true
                     anchors.fill: parent
+                    cursorShape: Qt.PointingHandCursor
                     onClicked : Workspaces.setWorkspace(index+1)
                 }
                 }
@@ -71,4 +73,21 @@ PanelWindow {
 
          
         }
+   Component.onCompleted: Qt.callLater(function() {
+    var adapters = Bluetooth.adapters.values
+    if (adapters.length === 0) {
+        console.log("no adapters found")
+        return
     }
+    var devices = adapters[0].devices.values
+    console.log("devices length:", devices.length)
+    for (var i = 0; i < devices.length; i++) {
+        var device = devices[i]
+        for (var prop in device) {
+            console.log(prop, ":", device[prop])
+        }
+    }
+})
+
+        }
+    
