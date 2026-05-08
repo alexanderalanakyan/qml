@@ -2,28 +2,29 @@ import QtQuick
 import Quickshell
 import QtQuick.Layouts
 
-PanelWindow {
-    property var modelData 
-    required property var top
-    required property  var bottom
-    required property  var left
-    required property  var right
-    id: topbar
-    color: "transparent"
-    anchors {
-        top: top
-        bottom: bottom
-        left: left
-        right: right
-    }
-    implicitHeight: 50
 
+PanelWindow {
+    color: "transparent"
+    property var modelData;
+    required property var atop
+    required property  var abottom;
+    required property  var aleft;
+    required property  var aright;
+    required property var barHeight;
+    id: topbar
+    
+    anchors {
+        top: atop
+        bottom: abottom
+        left: aleft
+        right: aright
+    }
+    implicitHeight: barHeight
     Rectangle {
         id: rectBar
         color: Color.tokyoNight.bg
         anchors.fill: parent
-        bottomLeftRadius: 15.0
-        bottomRightRadius: 15.0
+        implicitHeight: parent.implicitHeight
 
         RowLayout {
             anchors.fill: parent
@@ -73,21 +74,6 @@ PanelWindow {
 
          
         }
-   Component.onCompleted: Qt.callLater(function() {
-    var adapters = Bluetooth.adapters.values
-    if (adapters.length === 0) {
-        console.log("no adapters found")
-        return
-    }
-    var devices = adapters[0].devices.values
-    console.log("devices length:", devices.length)
-    for (var i = 0; i < devices.length; i++) {
-        var device = devices[i]
-        for (var prop in device) {
-            console.log(prop, ":", device[prop])
-        }
-    }
-})
 
         }
     

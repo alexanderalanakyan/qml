@@ -2,13 +2,13 @@ pragma Singleton
 import QtQuick
 import Quickshell
 import Quickshell.Bluetooth
+import "./Parse.js" as Parse
 
 Singleton {
     id: root;
-    readonly property QtObject devices: Bluetooth.devices;
-    readonly property QtObject adapters: Bluetooth.adapters;
-    property list<BluetoothDevice> currentDevices; 
-    property BluetoothAdapter currentAdapter: Bluetooth.defaultAdapter;
+    readonly property var devices: Parse.parseCircularList(Bluetooth.devices);
+    readonly property var adapters: Parse.parseCircularList(Bluetooth.adapters);
+    readonly property var currentAdapter: Parse.parseCircularList(Bluetooth.defaultAdapter);
 
 
         

@@ -1,9 +1,10 @@
-export function parseCircularList(list) {
+function parseCircularList(list) {
+    const newList = new Map()
     if ( typeof list === "object") {
         for (var k in list) {
             var v = list[k];
-            console.log( k + ":" + v)
+            newList.set(k,v)
         }
     }
-    return ;
+    return newList;
 }
